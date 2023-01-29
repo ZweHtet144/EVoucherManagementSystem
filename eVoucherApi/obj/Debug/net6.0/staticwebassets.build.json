@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "kikwLXxax4GgKQi6HHq6igZVDLteBg8WRxzTjv5kZtc=",
+  "Source": "eVoucherApi",
+  "BasePath": "_content/eVoucherApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

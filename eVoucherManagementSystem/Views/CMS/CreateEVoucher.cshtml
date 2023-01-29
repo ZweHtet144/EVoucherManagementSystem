@@ -1,0 +1,147 @@
+﻿@model eVoucherManagementSystem.Models.EVoucherViewModel
+
+@{
+    ViewData["Title"] = "CreateEVoucher";
+}
+
+<h1>CreateEVoucher</h1>
+<hr />
+<form asp-action="CreateEVoucher" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea class="form-control" cols="20" name="Description" rows="2"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+    </div><br />
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="ExpiryDate" class="control-label"></label>
+                <input asp-for="ExpiryDate" class="form-control" />
+                <span asp-validation-for="ExpiryDate" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Image" class="control-label"></label>
+                <input type="file" asp-for="file" class="form-control" name="file" />
+                <span asp-validation-for="file" class="text-danger"></span>
+            </div>
+        </div>
+    </div><br />
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Amount" class="control-label"></label>
+                <input asp-for="Amount" class="form-control" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="PaymentMethod" class="control-label"></label>
+                <select asp-for="PaymentMethod" class="form-control">
+                    <option>Please select one</option>
+                    <option>Visa</option>
+                    <option>Master</option>
+                </select>
+                <span asp-validation-for="PaymentMethod" class="text-danger"></span>
+            </div>
+        </div>
+    </div><br />
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Quantity" class="control-label"></label>
+                <input asp-for="Quantity" class="form-control" />
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="BuyType" class="control-label"></label>
+                <select asp-for="BuyType" class="form-control" id="buy-type">
+                    <option>Please select one</option>
+                    <option value="buy">Buy</option>
+                    <option value="gift">Gift</option>
+                </select>
+                <span asp-validation-for="BuyType" class="text-danger"></span>
+            </div>
+        </div>
+    </div><br />
+
+    <div class="row" id="buymyself">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="limit" class="control-label"></label>
+                <input asp-for="limit" class="form-control" />
+                <span asp-validation-for="limit" class="text-danger"></span>
+            </div>
+        </div>
+    </div><br />
+    <div class="row" id="giftother">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="GiftPerLimit" class="control-label"></label>
+                <input asp-for="GiftPerLimit" class="form-control" />
+                <span asp-validation-for="GiftPerLimit" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="GetEVoucherList">Back to List</a>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+    $('document').ready(function () {
+        $('#buymyself').hide();
+        $('#giftother').hide();
+    });
+    $("#buy-type").change(function () {
+        var getBuyType = $(this).val();
+        if (getBuyType == "buy") {
+            $('#buymyself').show();
+            $('#giftother').hide();
+        }
+        if (getBuyType == "gift") {
+            $('#buymyself').show();
+            $('#giftother').show();
+        }
+    });
+</script>
+
